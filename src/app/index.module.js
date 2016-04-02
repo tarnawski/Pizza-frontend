@@ -18,7 +18,8 @@
       'angular-storage',
 
       // App modules
-      'pizzaFrontend.login'
+      'pizzaFrontend.login',
+      'pizzaFrontend.dashboard'
     ]);
 
 })();

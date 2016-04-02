@@ -14,7 +14,7 @@
     $rootScope.$on('$stateChangeStart', onStateChangeStart);
 
     function onUserLoggedIn() {
-      $state.go('dashboard.main');
+      $state.go('dashboard');
     }
 
     function onUserLoggedOut() {
@@ -22,7 +22,7 @@
     }
 
     function onUserRefreshedToken() {
-      $state.go('dashboard.main', { message: 'Your session has been refreshed' });
+      $state.go('dashboard', { message: 'Your session has been refreshed' });
     }
 
     function onStateChangeStart(event, toState, toParams, fromState, fromParams) {
@@ -34,6 +34,6 @@
         $state.go('login');
       }
     }
-    
+
   }
 })();
