@@ -2,6 +2,23 @@
   'use strict';
 
   angular
-    .module('pizzaFrontend', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr']);
+    .module('pizzaFrontend', [
+      // Plugins
+      'ngAnimate',
+      'ngCookies',
+      'ngTouch',
+      'ngSanitize',
+      'ngMessages',
+      'ngAria',
+      'ngResource',
+      'ui.router',
+      'ui.bootstrap',
+      'toastr',
+      'toaster',
+      'angular-storage',
+
+      // App modules
+      'pizzaFrontend.login'
+    ]);
 
 })();
