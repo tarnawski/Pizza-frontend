@@ -19,7 +19,9 @@
 
       // App modules
       'pizzaFrontend.login',
-      'pizzaFrontend.dashboard'
+      'pizzaFrontend.dashboard',
+      'pizzaFrontend.customers',
+      'pizzaFrontend.profile'
     ]);
 
 })();

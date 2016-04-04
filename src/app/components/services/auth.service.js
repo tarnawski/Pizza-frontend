@@ -27,7 +27,7 @@
         //////////////
 
         function getUserInfo(tokenInformation){
-            return $http.get(userInfoUrl+'?access_token='+tokenInformation.access_token)
+            return $http.get(userInfoUrl)
                 .then(function(response){
                     // Merge data from currentUser and login endpoints
                     var userInfo = angular.extend({}, response.data, tokenInformation);
@@ -128,7 +128,7 @@
 
         function isUserAllowed(state){
             // State is not restricted or user is authenticated
-            if(!state.data.loginRequired || isAuthenticated()){
+            if(!state.data.requireAuth || isAuthenticated()){
                 return true;
             }
             // State is restricted and user is not authenticated
