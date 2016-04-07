@@ -17,7 +17,9 @@
     ////////////////
 
     function activate() {
-      vm.successResponse = $stateParams.message;
+      if($stateParams.message) {
+        vm.successResponse = $stateParams.message;
+      }
     }
 
     function signIn() {

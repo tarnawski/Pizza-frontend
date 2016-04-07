@@ -8,10 +8,18 @@
   /** @ngInject */
   function runBlock(CONSTANTS, $rootScope, $state, authService, store, toaster){
 
+    $rootScope.$on('request:Unauthorized', onUnauthorized);
     $rootScope.$on('user:LoggedIn', onUserLoggedIn);
     $rootScope.$on('user:LoggedOut', onUserLoggedOut);
     $rootScope.$on('user:RefreshedToken', onUserRefreshedToken);
     $rootScope.$on('$stateChangeStart', onStateChangeStart);
+
+    function onUnauthorized() {
+      authService.login(CONSTANTS.OAUTH.PROVIDERS.REFRESH_TOKEN)
+        .catch(function() {
+          $state.go('login', { message: 'You have to log in to process'});
+        });
+    }
 
     function onUserLoggedIn() {
       $state.go('dashboard');

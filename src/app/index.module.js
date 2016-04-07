@@ -21,7 +21,8 @@
       'pizzaFrontend.login',
       'pizzaFrontend.dashboard',
       'pizzaFrontend.customers',
-      'pizzaFrontend.profile'
+      'pizzaFrontend.profile',
+      'pizzaFrontend.promocodes'
     ]);
 
 })();
