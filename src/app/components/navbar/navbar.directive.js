@@ -6,7 +6,7 @@
     .directive('navbar', navbar);
 
   /** @ngInject */
-  function navbar(authService, store) {
+  function navbar($state, authService, store) {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
@@ -37,6 +37,8 @@
 
       function logoutUser() {
         authService.logout();
+        $state.go('login', {message: 'Zostałeś popranie wylogowany'});
+
       }
     }
   }

@@ -1,0 +1,70 @@
+<navbar></navbar>
+<div class="container">
+  <h1 class="page-header">
+    Kody promocyjne
+    <button ui-sref="promocodes"
+            class="btn btn-primary pull-right" type="button">Wróć do listy kodów promocyjnych
+    </button>
+  </h1>
+<div class="panel panel-default">
+    <div class="panel-heading">Aktualizuj kod promocyjny</div>
+    <div class="panel-body">
+      <form name="updateForm">
+        <div class="form-group" ng-class="updateForm.name.$dirty && updateForm.name.$invalid ? 'has-error' : ''">
+          <label for="name">Nazwa kody promocyjnego:</label>
+          <input ng-model="updatePromocode.promocode.name"
+                 type="text"
+                 class="form-control"
+                 name="name"
+                 id="name"
+                 placeholder="Podaj nazwe kodu promocyjnego"
+                 ng-maxlength="50"
+                 required>
+        </div>
+        <div class="form-group" ng-class="updateForm.type.$dirty && updateForm.type.$invalid ? 'has-error' : ''">
+          <label for="type">Typ:</label>
+          <select ng-model="updatePromocode.promocode.type" name="type" id="type" class="form-control" required>
+            <option value="percent">Procentowy</option>
+            <option value="overall">Całościowy</option>
+          </select>
+        </div>
+        <div class="form-group" ng-class="updateForm.value.$dirty && updateForm.value.$invalid ? 'has-error' : ''">
+          <label for="value">Wartość:</label>
+          <input ng-model="updatePromocode.promocode.value" type="number" class="form-control" name="value" id="value"
+                 placeholder="Podaj wartość" required>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group" ng-class="updateForm.code.$dirty && updateForm.code.$invalid ? 'has-error' : ''">
+              <label for="code">Kod promocyjny:</label>
+              <input ng-model="updatePromocode.promocode.code"
+                     ng-maxlength="20"
+                     type="text"
+                     class="form-control"
+                     name="code"
+                     id="code"
+                     placeholder="Podaj kod promocyjny"
+                     required>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="code">Wygeneruj kod promocyjny:</label>
+            <button ng-click="updatePromocode.generate()" type="button" class="btn btn-default btn-block">Wygeneruj
+              automatycznie
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="available">Dostępność:</label>
+          <input ng-model="updatePromocode.promocode.available" id="available" type="checkbox" checked="true">
+        </div>
+      </form>
+      <div class="pull-right">
+        <button ng-click="updateForm.$valid && updatePromocode.update()"
+                ng-disabled="updateForm.$invalid"
+                class="btn btn-success">Aktualizuj kod promocyjny
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

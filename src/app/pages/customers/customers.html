@@ -1,6 +1,8 @@
 <navbar></navbar>
 
 <div class="container">
+  <div ng-show="customers.info && customers.count" class="alert alert-info">{{customers.info}}</div>
+
   <h1 class="page-header">Klienci</h1>
 
   <div class="panel panel-default">
@@ -15,7 +17,7 @@
             </div>
             <div class="form-group">
               <label for="email">E-mail:</label>
-              <input ng-model="customers.email" type="email" class="form-control" id="email" placeholder="Podaj adres e-mail klienta">
+              <input ng-model="customers.email" type="text" class="form-control" id="email" placeholder="Podaj adres e-mail klienta">
             </div>
             <div class="form-group">
               <label for="address">Adres:</label>
@@ -60,6 +62,7 @@
           <th>Email</th>
           <th>Telefon</th>
           <th>Adres</th>
+          <th>Opcje</th>
         </tr>
         </thead>
         <tbody>
@@ -69,18 +72,19 @@
           <td>{{customer.email}}</td>
           <td>{{customer.phone}}</td>
           <td>{{customer.address}}</td>
+          <td>
+            <button ui-sref="update_customer({ id: customer.id })" class="btn btn-xs btn-primary" type="button">Edytuj</button>
+            <button ng-click="customers.remove(customer.id)" class="btn btn-xs btn-danger" type="button">Usuń</button>
+          </td>
         </tr>
         </tbody>
       </table>
 
       <ul class="pagination pull-right">
-        <li><a href="#">&laquo;</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">&raquo;</a></li>
+        <button ng-show="(customers.page) > 1" ng-click="customers.getPage(customers.page - 1)" class="btn btn-default" type="button">Poprzednia strona</button>
+        <button ng-show="(customers.page) < customers.pages" ng-click="customers.getPage(customers.page + 1)" class="btn btn-default" type="button">Następna strona</button>
+
+
       </ul>
 
     </div>

@@ -1,0 +1,83 @@
+<navbar></navbar>
+<div class="container">
+  <h1 class="page-header">
+    Klienci
+    <button ui-sref="customers"
+            class="btn btn-primary pull-right" type="button">Wróć do listy klientów
+    </button>
+  </h1>
+<div class="panel panel-default">
+    <div class="panel-heading">Aktualizuj dane klienta</div>
+    <div class="panel-body">
+      <form name="updateForm">
+
+        <div class="form-group" ng-class="updateForm.firstName.$dirty && updateForm.firstName.$invalid ? 'has-error' : ''">
+          <label for="firstName">Imię klienta:</label>
+          <input ng-model="updateCustomer.customer.first_name"
+                 type="text"
+                 class="form-control"
+                 name="firstName"
+                 id="firstName"
+                 placeholder="Podaj imię"
+                 ng-maxlength="50"
+                 required>
+        </div>
+
+        <div class="form-group" ng-class="updateForm.lastName.$dirty && updateForm.lastName.$invalid ? 'has-error' : ''">
+          <label for="lastName">Nazwisko klienta:</label>
+          <input ng-model="updateCustomer.customer.last_name"
+                 type="text"
+                 class="form-control"
+                 name="lastName"
+                 id="lastName"
+                 placeholder="Podaj nazwisko"
+                 ng-maxlength="50"
+                 required>
+        </div>
+
+        <div class="form-group" ng-class="updateForm.email.$dirty && updateForm.email.$invalid ? 'has-error' : ''">
+          <label for="email">Adres email:</label>
+          <input ng-model="updateCustomer.customer.email"
+                 type="text"
+                 class="form-control"
+                 name="email"
+                 id="email"
+                 placeholder="Podaj adres email"
+                 ng-maxlength="50"
+                 required>
+        </div>
+
+        <div class="form-group" ng-class="updateForm.phone.$dirty && updateForm.phone.$invalid ? 'has-error' : ''">
+          <label for="phone">Numer telefonu:</label>
+          <input ng-model="updateCustomer.customer.phone"
+                 type="text"
+                 class="form-control"
+                 name="phone"
+                 id="phone"
+                 placeholder="Podaj numer telefonu"
+                 ng-maxlength="50"
+                 required>
+        </div>
+
+        <div class="form-group" ng-class="updateForm.address.$dirty && updateForm.address.$invalid ? 'has-error' : ''">
+          <label for="address">Adres zamieszkania:</label>
+          <input ng-model="updateCustomer.customer.address"
+                 type="text"
+                 class="form-control"
+                 name="address"
+                 id="address"
+                 placeholder="Podaj adres zamieszkania"
+                 ng-maxlength="50"
+                 required>
+        </div>
+
+      </form>
+      <div class="pull-right">
+        <button ng-click="updateForm.$valid && updateCustomer.update()"
+                ng-disabled="updateForm.$invalid"
+                class="btn btn-success">Aktualizuj dane klienta
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

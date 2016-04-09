@@ -25,7 +25,26 @@
         data: {
           requireAuth: true
         }
-      });
+      })
+      .state('update_customer', {
+        url: '/customer/:id',
+        templateUrl: 'app/pages/customers/components/update/updateCustomer.html',
+        controller: 'updateCustomerController',
+        controllerAs: 'updateCustomer',
+        params: {
+          message: null
+        },
+        resolve: {
+          message: /* @ngInject */
+            function ($stateParams) {
+              return $stateParams.message;
+            }
+        },
+        data: {
+          requireAuth: true
+        }
+      })
+    ;
   }
 
 })();
