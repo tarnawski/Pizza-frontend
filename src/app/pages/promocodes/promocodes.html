@@ -4,19 +4,12 @@
   <div ng-show="promocodes.info && promocodes.count" class="alert alert-info">{{promocodes.info}}</div>
   <h1 class="page-header">
     Kody promocyjne
-    <button ng-click="promocodes.changeStatus('create')" ng-show="promocodes.status == 'list'"
+    <button ui-sref="create_promocode"
             class="btn btn-success pull-right" type="button">Dodaj nowy kod promocyjny
-    </button>
-    <button ng-click="promocodes.changeStatus('list')" ng-show="promocodes.status != 'list'"
-            class="btn btn-primary pull-right" type="button">Wróć do listy kodów promocyjnych
     </button>
   </h1>
 
-  <create-promocode ng-show="promocodes.status == 'create'"></create-promocode>
-
-
-
-  <div ng-show="promocodes.status == 'list'" class="panel panel-default">
+  <div class="panel panel-default">
     <div class="panel-body">
       <table class="table table-striped">
         <thead>
@@ -39,7 +32,7 @@
           <td>{{promocode.code}}</td>
           <td>{{promocode.available}}</td>
           <td>
-            <button ng-click="promocodes.edit(promocode)" class="btn btn-xs btn-primary" type="button">Edytuj</button>
+            <button ui-sref="update_promocode({ id: promocode.id })" class="btn btn-xs btn-primary" type="button">Edytuj</button>
             <button ng-click="promocodes.remove(promocode.id)" class="btn btn-xs btn-danger" type="button">Usuń</button>
           </td>
         </tr>
@@ -47,69 +40,4 @@
       </table>
     </div>
   </div>
-
-
-
-  <div ng-show="promocodes.status == 'update'" class="panel panel-default">
-    <div class="panel-heading">Dodaj nowy kod promocyjny</div>
-    <div class="panel-body">
-      <form name="updateForm">
-        <div class="form-group" ng-class="createForm.name.$dirty && createForm.name.$invalid ? 'has-error' : ''">
-          <label for="name">Nazwa kodu promocyjnego:</label>
-          <input ng-model="promocodes.name"
-                 type="text"
-                 class="form-control"
-                 name="name"
-                 id="name"
-                 placeholder="Podaj nazwe kodu promocyjnego"
-                 ng-maxlength="50"
-                 required>
-        </div>
-        <div class="form-group" ng-class="createForm.type.$dirty && createForm.type.$invalid ? 'has-error' : ''">
-          <label for="type">Typ:</label>
-          <select ng-model="promocodes.type" name="type" id="type" class="form-control" required>
-            <option value="percent">Procentowy</option>
-            <option value="overall">Całościowy</option>
-          </select>
-        </div>
-        <div class="form-group" ng-class="createForm.value.$dirty && createForm.value.$invalid ? 'has-error' : ''">
-          <label for="value">Wartość:</label>
-          <input ng-model="promocodes.value" type="number" class="form-control" name="value" id="value"
-                 placeholder="Podaj wartość" required>
-        </div>
-        <div class="row">
-          <div class="col-md-8">
-            <div class="form-group" ng-class="createForm.code.$dirty && createForm.code.$invalid ? 'has-error' : ''">
-              <label for="code">Kod promocyjny:</label>
-              <input ng-model="promocodes.code"
-                     ng-maxlength="20"
-                     type="text"
-                     class="form-control"
-                     name="code"
-                     id="code"
-                     placeholder="Podaj kod promocyjny"
-                     required>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <label for="code">Wygeneruj kod promocyjny:</label>
-            <button ng-click="promocodes.generate()" type="button" class="btn btn-default btn-block">Wygeneruj
-              automatycznie
-            </button>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="available">Dostępność:</label>
-          <input ng-model="promocodes.available" id="available" type="checkbox" checked="true">
-        </div>
-      </form>
-      <div class="pull-right">
-        <button ng-click="updateForm.$valid && promocodes.update()"
-                ng-disabled="updateForm.$invalid"
-                class="btn btn-success">Aktualizuj kod promocyjny
-        </button>
-      </div>
-    </div>
-  </div>
-
 </div>

@@ -1,0 +1,33 @@
+<navbar></navbar>
+
+<div class="container">
+  <div ng-show="types.info && types.count" class="alert alert-info">{{types.info}}</div>
+  <h1 class="page-header">
+    Kategorie produktów
+    <button ui-sref="create_type"
+            class="btn btn-success pull-right" type="button">Dodaj nową kategorie
+    </button>
+  </h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Nazwa</th>
+          <th>Opcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="type in types.types">
+          <td>{{type.name}}</td>
+          <td>
+            <button  class="btn btn-xs btn-success" type="button">Lista produktów</button>
+            <button ui-sref="update_type({ id: type.id })" class="btn btn-xs btn-primary" type="button">Edytuj kategorie</button>
+            <button ng-click="types.remove(type.id)" class="btn btn-xs btn-danger" type="button">Usuń kategorie</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -2,17 +2,17 @@
   'use strict';
 
   angular
-    .module('pizzaFrontend.promocodes')
+    .module('pizzaFrontend.products')
     .config(routeConfig);
 
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('promocodes', {
-        url: '/promocodes',
-        templateUrl: 'app/pages/promocodes/promocodes.html',
-        controller: 'PromocodesController',
-        controllerAs: 'promocodes',
+      .state('products', {
+        url: 'types/:idType/products',
+        templateUrl: 'app/pages/products/products.html',
+        controller: 'ProductsController',
+        controllerAs: 'products',
         params: {
           message: null
         },
@@ -26,11 +26,11 @@
           requireAuth: true
         }
       })
-      .state('create_promocode', {
-        url: '/promocode/create',
-        templateUrl: 'app/pages/promocodes/components/create/createPromocode.html',
-        controller: 'createPromocodeController',
-        controllerAs: 'createPromocode',
+      .state('create_product', {
+        url: 'types/:idType/products/create',
+        templateUrl: 'app/pages/products/components/create/createProduct.html',
+        controller: 'createProductController',
+        controllerAs: 'createProduct',
         params: {
           message: null
         },
@@ -44,11 +44,11 @@
           requireAuth: true
         }
       })
-      .state('update_promocode', {
-        url: '/promocode/:id',
-        templateUrl: 'app/pages/promocodes/components/update/updatePromocode.html',
-        controller: 'updatePromocodeController',
-        controllerAs: 'updatePromocode',
+      .state('update_product', {
+        url: 'types/:idType/products/:id',
+        templateUrl: 'app/pages/products/components/update/updateProduct.html',
+        controller: 'updateProductController',
+        controllerAs: 'updateProduct',
         params: {
           message: null
         },

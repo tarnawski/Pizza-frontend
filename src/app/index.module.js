@@ -22,7 +22,9 @@
       'pizzaFrontend.dashboard',
       'pizzaFrontend.customers',
       'pizzaFrontend.profile',
-      'pizzaFrontend.promocodes'
+      'pizzaFrontend.promocodes',
+      'pizzaFrontend.types',
+      'pizzaFrontend.products'
     ]);
 
 })();

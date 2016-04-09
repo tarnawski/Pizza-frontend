@@ -2,17 +2,17 @@
   'use strict';
 
   angular
-    .module('pizzaFrontend.promocodes')
+    .module('pizzaFrontend.types')
     .config(routeConfig);
 
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('promocodes', {
-        url: '/promocodes',
-        templateUrl: 'app/pages/promocodes/promocodes.html',
-        controller: 'PromocodesController',
-        controllerAs: 'promocodes',
+      .state('types', {
+        url: '/types',
+        templateUrl: 'app/pages/types/types.html',
+        controller: 'TypesController',
+        controllerAs: 'types',
         params: {
           message: null
         },
@@ -26,11 +26,11 @@
           requireAuth: true
         }
       })
-      .state('create_promocode', {
-        url: '/promocode/create',
-        templateUrl: 'app/pages/promocodes/components/create/createPromocode.html',
-        controller: 'createPromocodeController',
-        controllerAs: 'createPromocode',
+      .state('create_type', {
+        url: '/type/create',
+        templateUrl: 'app/pages/types/components/create/createType.html',
+        controller: 'createTypeController',
+        controllerAs: 'createType',
         params: {
           message: null
         },
@@ -44,11 +44,11 @@
           requireAuth: true
         }
       })
-      .state('update_promocode', {
-        url: '/promocode/:id',
-        templateUrl: 'app/pages/promocodes/components/update/updatePromocode.html',
-        controller: 'updatePromocodeController',
-        controllerAs: 'updatePromocode',
+      .state('update_type', {
+        url: '/type/:id',
+        templateUrl: 'app/pages/types/components/update/updateType.html',
+        controller: 'updateTypeController',
+        controllerAs: 'updateType',
         params: {
           message: null
         },

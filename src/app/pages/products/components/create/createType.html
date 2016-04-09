@@ -1,0 +1,33 @@
+<navbar></navbar>
+<div class="container">
+  <h1 class="page-header">
+    Kategorie produktów
+    <button ui-sref="types"
+            class="btn btn-primary pull-right" type="button">Wróć do listy kategorii
+    </button>
+  </h1>
+<div class="panel panel-default">
+    <div class="panel-heading">Dodaj nową kategorie</div>
+    <div class="panel-body">
+      <form name="createForm">
+        <div class="form-group" ng-class="createForm.name.$dirty && createForm.name.$invalid ? 'has-error' : ''">
+          <label for="name">Nazwa kategorii:</label>
+          <input ng-model="createType.name"
+                 type="text"
+                 class="form-control"
+                 name="name"
+                 id="name"
+                 placeholder="Podaj nazwe nowej kategorii"
+                 ng-maxlength="20"
+                 required>
+        </div>
+      </form>
+      <div class="pull-right">
+        <button ng-click="createForm.$valid && createType.save()"
+                ng-disabled="createForm.$invalid"
+                class="btn btn-success">Zapisz kategorię
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
