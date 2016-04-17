@@ -1,0 +1,52 @@
+<navbar></navbar>
+<div class="container">
+  <h1 class="page-header">
+    Produkty
+    <button ui-sref="products({type_id: updateProduct.idType})"
+            class="btn btn-primary pull-right" type="button">Wróć do listy produktów
+    </button>
+  </h1>
+<div class="panel panel-default">
+    <div class="panel-heading">Aktualizuj produkt</div>
+    <div class="panel-body">
+      <form name="updateForm">
+
+        <div class="form-group" ng-class="createForm.name.$dirty && createForm.name.$invalid ? 'has-error' : ''">
+          <label for="name">Nazwa produktu:</label>
+          <input ng-model="updateProduct.product.name"
+                 type="text"
+                 class="form-control"
+                 name="name"
+                 id="name"
+                 placeholder="Podaj nazwe nowego produktu"
+                 ng-maxlength="50"
+                 required>
+        </div>
+
+        <div class="form-group" ng-class="createForm.description.$dirty && createForm.description.$invalid ? 'has-error' : ''">
+          <label for="name">Opis produktu:</label>
+          <input ng-model="updateProduct.product.description"
+                 type="text"
+                 class="form-control"
+                 name="description"
+                 id="description"
+                 placeholder="Podaj opis nowego produktu"
+                 ng-maxlength="200"
+                 required>
+        </div>
+
+        <div class="form-group">
+          <label for="available">Dostępność:</label>
+          <input ng-model="updateProduct.product.available" id="available" type="checkbox" checked="true">
+        </div>
+
+      </form>
+      <div class="pull-right">
+        <button ng-click="updateForm.$valid && updateProduct.update()"
+                ng-disabled="updateForm.$invalid"
+                class="btn btn-success">Aktualizuj produkt
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

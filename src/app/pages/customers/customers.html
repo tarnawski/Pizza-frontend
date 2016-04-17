@@ -1,0 +1,93 @@
+<navbar></navbar>
+
+<div class="container">
+  <div ng-show="customers.info && customers.count" class="alert alert-info">{{customers.info}}</div>
+
+  <h1 class="page-header">Klienci</h1>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Wyszukuj klientów</div>
+    <div class="panel-body">
+      <form role="form">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="firstName">Imię:</label>
+              <input ng-model="customers.firstName" type="text" class="form-control" id="firstName" placeholder="Podaj imię klienta">
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail:</label>
+              <input ng-model="customers.email" type="text" class="form-control" id="email" placeholder="Podaj adres e-mail klienta">
+            </div>
+            <div class="form-group">
+              <label for="address">Adres:</label>
+              <input ng-model="customers.address" type="text" class="form-control" id="address" placeholder="Podaj adres klienta">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="lastName">Nazwisko:</label>
+              <input ng-model="customers.lastName" type="text" class="form-control" id="lastName" placeholder="Podaj nazwisko klienta">
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon:</label>
+              <input ng-model="customers.phone" type="text" class="form-control" id="phone" placeholder="Podaj telefon klienta">
+            </div>
+            <div class="form-group">
+              <label for="phone">Ilość wyników na stronie:</label>
+              <select ng-model="customers.limit" class="form-control">
+              <option value="10">Opcja 10</option>
+              <option value="25">Opcja 25</option>
+              <option value="50">Opcja 50</option>
+              <option value="100">Opcja 100</option>
+            </select>
+          </div>
+            </div>
+          </div>
+        <div class="pull-right">
+          <button ng-click="customers.reset()" class="btn btn-default">Resetuj filtry</button>
+          <button ng-click="customers.search()" class="btn btn-primary">Wyszukaj</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Imię</th>
+          <th>Nazwisko</th>
+          <th>Email</th>
+          <th>Telefon</th>
+          <th>Adres</th>
+          <th>Opcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="customer in customers.customers">
+          <td>{{customer.first_name}}</td>
+          <td>{{customer.last_name}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.phone}}</td>
+          <td>{{customer.address}}</td>
+          <td>
+            <button ui-sref="update_customer({ id: customer.id })" class="btn btn-xs btn-primary" type="button">Edytuj</button>
+            <button ng-click="customers.remove(customer.id)" class="btn btn-xs btn-danger" type="button">Usuń</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <ul class="pagination pull-right">
+        <button ng-show="(customers.page) > 1" ng-click="customers.getPage(customers.page - 1)" class="btn btn-default" type="button">Poprzednia strona</button>
+        <button ng-show="(customers.page) < customers.pages" ng-click="customers.getPage(customers.page + 1)" class="btn btn-default" type="button">Następna strona</button>
+
+
+      </ul>
+
+    </div>
+  </div>
+
+</div>

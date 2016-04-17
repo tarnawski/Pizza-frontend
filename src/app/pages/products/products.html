@@ -1,0 +1,44 @@
+<navbar></navbar>
+
+<div class="container">
+  <div ng-show="products.info && products.count" class="alert alert-info">{{products.info}}</div>
+  <h1 class="page-header">
+    Lista produktów
+    <div class="pull-right">
+      <button ui-sref="types"
+              class="btn btn-primary" type="button">Wróć do listy kategorii
+      </button>
+      <button ui-sref="create_product({type_id: products.idType})"
+            class="btn btn-success" type="button">Dodaj nowy produkt
+      </button>
+    </div>
+  </h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Nazwa</th>
+          <th>Opis</th>
+          <th>Dostępność</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in products.products">
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.available}}</td>
+          <td>
+            <div class="pull-right">
+            <button ui-sref="prices({type_id: products.idType, product_id: product.id})" class="btn btn-xs btn-success" type="button">Lista cen produktu</button>
+            <button ui-sref="update_product({type_id: products.idType, product_id: product.id})" class="btn btn-xs btn-primary" type="button">Edytuj produkt</button>
+            <button ng-click="products.remove(product.id)" class="btn btn-xs btn-danger" type="button">Usuń produkt</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<navbar></navbar>
+
+<div class="container">
+  <div ng-show="promocodes.info && promocodes.count" class="alert alert-info">{{promocodes.info}}</div>
+  <h1 class="page-header">
+    Kody promocyjne
+    <button ui-sref="create_promocode"
+            class="btn btn-success pull-right" type="button">Dodaj nowy kod promocyjny
+    </button>
+  </h1>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Nazwa</th>
+          <th>Rabat procentowy</th>
+          <th>Rabat całościowy</th>
+          <th>Wartość</th>
+          <th>Kod</th>
+          <th>Aktywny</th>
+          <th>Opcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="promocode in promocodes.promocodes">
+          <td>{{promocode.name}}</td>
+          <td>{{promocode.percent}}</td>
+          <td>{{promocode.overall}}</td>
+          <td>{{promocode.value}}</td>
+          <td>{{promocode.code}}</td>
+          <td>{{promocode.available}}</td>
+          <td>
+            <button ui-sref="update_promocode({ id: promocode.id })" class="btn btn-xs btn-primary" type="button">Edytuj</button>
+            <button ng-click="promocodes.remove(promocode.id)" class="btn btn-xs btn-danger" type="button">Usuń</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
