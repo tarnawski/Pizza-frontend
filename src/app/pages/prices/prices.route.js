@@ -2,17 +2,17 @@
   'use strict';
 
   angular
-    .module('pizzaFrontend.products')
+    .module('pizzaFrontend.prices')
     .config(routeConfig);
 
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-      .state('products', {
-        url: '/type/:type_id/products',
-        templateUrl: 'app/pages/products/products.html',
-        controller: 'ProductsController',
-        controllerAs: 'products',
+      .state('prices', {
+        url: '/type/:type_id/product/:product_id/prices',
+        templateUrl: 'app/pages/prices/prices.html',
+        controller: 'PricesController',
+        controllerAs: 'prices',
         params: {
           message: null
         },
@@ -26,11 +26,11 @@
           requireAuth: true
         }
       })
-      .state('create_product', {
-        url: '/types/:type_id/products/create',
-        templateUrl: 'app/pages/products/components/create/createProduct.html',
-        controller: 'createProductController',
-        controllerAs: 'createProduct',
+      .state('create_price', {
+        url: '/types/:type_id/product/:product_id/price',
+        templateUrl: 'app/pages/prices/components/create/createPrice.html',
+        controller: 'createPriceController',
+        controllerAs: 'createPrice',
         params: {
           message: null
         },
@@ -44,11 +44,11 @@
           requireAuth: true
         }
       })
-      .state('update_product', {
-        url: '/types/:type_id/products/:product_id',
-        templateUrl: 'app/pages/products/components/update/updateProduct.html',
-        controller: 'updateProductController',
-        controllerAs: 'updateProduct',
+      .state('update_price', {
+        url: '/types/:type_id/product/:product_id/prices/:price_id',
+        templateUrl: 'app/pages/prices/components/update/updatePrice.html',
+        controller: 'updatePriceController',
+        controllerAs: 'updatePrice',
         params: {
           message: null
         },

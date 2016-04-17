@@ -43,8 +43,8 @@
     function remove(id){
       communicationFactory.types.delete({id: id},
         function (data) {
-          $state.go('types', { message: 'Kategoria została usunięta.' });
-      },
+          $state.go($state.current, {message: 'Kategoria została usunięta.'}, {reload: true});
+        },
         function () {
           $state.go('types', { message: 'Błąd aplikacji. Jeśli problem będzie się powtarzał skontaktuj się z administratorem.' });
         }

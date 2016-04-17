@@ -50,8 +50,8 @@
 
         function refreshToken() {
             var currentUser = getCurrentUser();
-            if (angular.isEmpty(currentUser)) {
-                $state.go('home.login', { message: 'You have to log in to process'});
+            if (typeof currentUser  == 'undefined') {
+                $state.go('login', { message: 'You have to log in to process'});
                 return $q.reject("You have to log in to process");
             }
 

@@ -1,0 +1,41 @@
+<navbar></navbar>
+
+<div class="container">
+  <div ng-show="prices.info && prices.count" class="alert alert-info">{{prices.info}}</div>
+  <h1 class="page-header">
+    Ceny produktu
+    <div class="pull-right">
+      <button ui-sref="products({type_id: prices.idType})"
+              class="btn btn-primary" type="button">Wróć do listy produktów
+      </button>
+      <button ui-sref="create_price({type_id: prices.idType, product_id: prices.idProduct})"
+            class="btn btn-success" type="button">Dodaj nową cene
+      </button>
+    </div>
+  </h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Typ</th>
+          <th>Wartość</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="price in prices.prices">
+          <td>{{price.type}}</td>
+          <td>{{price.value}} zł</td>
+          <td>
+            <div class="pull-right">
+            <button ui-sref="update_price({type_id: prices.idType, product_id: prices.idProduct, price_id: price.id})" class="btn btn-xs btn-primary" type="button">Edytuj cene</button>
+            <button ng-click="prices.remove(price.id)" class="btn btn-xs btn-danger" type="button">Usuń cenę</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

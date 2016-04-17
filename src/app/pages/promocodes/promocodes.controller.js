@@ -67,8 +67,8 @@
     function remove(id){
       communicationFactory.promocodes.delete({id: id},
         function (data) {
-          $state.go('promocodes', { message: 'Kod promocyjny został usunięty.' });
-      },
+          $state.go($state.current, {message: 'Kod promocyjny został usunięty.'}, {reload: true});
+        },
         function () {
           $state.go('promocodes', { message: 'Błąd aplikacji. Jeśli problem będzie się powtarzał skontaktuj się z administratorem.' });
         }

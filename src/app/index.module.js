@@ -24,7 +24,9 @@
       'pizzaFrontend.profile',
       'pizzaFrontend.promocodes',
       'pizzaFrontend.types',
-      'pizzaFrontend.products'
+      'pizzaFrontend.products',
+      'pizzaFrontend.prices',
+      'pizzaFrontend.orders'
     ]);
 
 })();

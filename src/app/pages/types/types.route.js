@@ -45,7 +45,7 @@
         }
       })
       .state('update_type', {
-        url: '/type/:id',
+        url: '/type/{id:int}',
         templateUrl: 'app/pages/types/components/update/updateType.html',
         controller: 'updateTypeController',
         controllerAs: 'updateType',

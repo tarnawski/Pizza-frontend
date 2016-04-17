@@ -20,6 +20,10 @@
       if($stateParams.message) {
         pushMessage($stateParams.message, 5000);
       }
+      getData();
+    }
+
+    function getData() {
       communicationFactory.customers.get(function (data) {
         vm.customers = data._embedded.items;
         vm.page = data.page;
@@ -27,16 +31,15 @@
         vm.total = data.pages;
       });
     }
-
     function resetFilters() {
-        vm.page = '';
+        vm.page = 1;
         vm.limit = '';
         vm.firstName = '';
         vm.lastName = '';
         vm.email = '';
         vm.phone = '';
         vm.address = '';
-        activate();
+        getData();
     }
 
     function search() {
@@ -76,7 +79,7 @@
     function remove(id){
       communicationFactory.customers.delete({id: id},
         function (data) {
-          $state.go('customers', { message: 'Klient został usunięty.' });
+          $state.go($state.current, {message: 'Klient został usunięty.'}, {reload: true});
         },
         function () {
           $state.go('customers', { message: 'Błąd aplikacji. Jeśli problem będzie się powtarzał skontaktuj się z administratorem.' });
