@@ -1,0 +1,45 @@
+<navbar></navbar>
+<div class="container">
+  <h1 class="page-header">
+    Ceny produktu
+    <button ui-sref="prices({type_id: createPrice.idType, product_id: createPrice.idProduct})"
+            class="btn btn-primary pull-right" type="button">Wróć do listy produktów
+    </button>
+  </h1>
+<div class="panel panel-default">
+    <div class="panel-heading">Aktualizuj cene produktu</div>
+    <div class="panel-body">
+      <form name="updateForm">
+
+        <div class="form-group" ng-class="createForm.name.$dirty && createForm.name.$invalid ? 'has-error' : ''">
+          <label for="name">Nazwa ceny:</label>
+          <input ng-model="updatePrice.price.type"
+                 type="text"
+                 class="form-control"
+                 name="name"
+                 id="name"
+                 placeholder="Podaj nazwe ceny"
+                 ng-maxlength="50"
+                 required>
+        </div>
+
+        <div class="form-group" ng-class="createForm.description.$dirty && createForm.description.$invalid ? 'has-error' : ''">
+          <label for="name">Nazwa produktu:</label>
+          <input ng-model="updatePrice.price.value"
+                 type="number"
+                 class="form-control"
+                 name="description"
+                 id="description"
+                 placeholder="Podaj opis nowego produktu"
+                 required>
+        </div>
+      </form>
+      <div class="pull-right">
+        <button ng-click="updateForm.$valid && updatePrice.update()"
+                ng-disabled="updateForm.$invalid"
+                class="btn btn-success">Aktualizuj cene produktu
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

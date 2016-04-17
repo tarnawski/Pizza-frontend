@@ -17,19 +17,20 @@
     ////////////////////////////////
 
     function activate() {
+      vm.idType = $stateParams.type_id;
       if($stateParams.message) {
         pushMessage($stateParams.message, 5000);
       }
-      getData();
+      getData($stateParams.type_id);
     }
 
-    function getData(){
-      communicationFactory.products.query(
+    function getData(idType){
+      communicationFactory.products.query({type_id: idType},
         function (data) {
-          vm.types = data;
+          vm.products = data;
       },
         function () {
-          $state.go('types', { message: 'Błąd aplikacji. Jeśli problem będzie się powtarzał skontaktuj się z administratorem.' });
+          $state.go('products', { message: 'Błąd aplikacji. Jeśli problem będzie się powtarzał skontaktuj się z administratorem.' });
         }
       );
     }
@@ -41,12 +42,12 @@
     }
 
     function remove(id){
-      communicationFactory.types.delete({id: id},
+      communicationFactory.products.delete({type_id: $stateParams.type_id, product_id: id},
         function (data) {
-          $state.go('types', { message: 'Kategoria została usunięta.' });
-      },
+          $state.go($state.current, {message: 'Produkt został usunięty.'}, {reload: true});
+        },
         function () {
-          $state.go('types', { message: 'Błąd aplikacji. Jeśli problem będzie się powtarzał skontaktuj się z administratorem.' });
+          $state.go('products', { message: 'Błąd aplikacji. Jeśli problem będzie się powtarzał skontaktuj się z administratorem.' });
         }
       );
     }

@@ -1,12 +1,17 @@
 <navbar></navbar>
 
 <div class="container">
-  <div ng-show="types.info && types.count" class="alert alert-info">{{types.info}}</div>
+  <div ng-show="products.info && products.count" class="alert alert-info">{{products.info}}</div>
   <h1 class="page-header">
-    Kategorie produktów
-    <button ui-sref="create_type"
-            class="btn btn-success pull-right" type="button">Dodaj nową kategorie
-    </button>
+    Lista produktów
+    <div class="pull-right">
+      <button ui-sref="types"
+              class="btn btn-primary" type="button">Wróć do listy kategorii
+      </button>
+      <button ui-sref="create_product({type_id: products.idType})"
+            class="btn btn-success" type="button">Dodaj nowy produkt
+      </button>
+    </div>
   </h1>
   <div class="panel panel-default">
     <div class="panel-body">
@@ -14,16 +19,22 @@
         <thead>
         <tr>
           <th>Nazwa</th>
-          <th>Opcje</th>
+          <th>Opis</th>
+          <th>Dostępność</th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="type in types.types">
-          <td>{{type.name}}</td>
+        <tr ng-repeat="product in products.products">
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.available}}</td>
           <td>
-            <button  class="btn btn-xs btn-success" type="button">Lista produktów</button>
-            <button ui-sref="update_type({ id: type.id })" class="btn btn-xs btn-primary" type="button">Edytuj kategorie</button>
-            <button ng-click="types.remove(type.id)" class="btn btn-xs btn-danger" type="button">Usuń kategorie</button>
+            <div class="pull-right">
+            <button ui-sref="prices({type_id: products.idType, product_id: product.id})" class="btn btn-xs btn-success" type="button">Lista cen produktu</button>
+            <button ui-sref="update_product({type_id: products.idType, product_id: product.id})" class="btn btn-xs btn-primary" type="button">Edytuj produkt</button>
+            <button ng-click="products.remove(product.id)" class="btn btn-xs btn-danger" type="button">Usuń produkt</button>
+            </div>
           </td>
         </tr>
         </tbody>

@@ -14,16 +14,18 @@
         <thead>
         <tr>
           <th>Nazwa</th>
-          <th>Opcje</th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="type in types.types">
           <td>{{type.name}}</td>
           <td>
-            <button  class="btn btn-xs btn-success" type="button">Lista produktów</button>
+            <div class="pull-right">
+            <button ui-sref="products({ type_id: type.id })" class="btn btn-xs btn-success" type="button">Lista produktów</button>
             <button ui-sref="update_type({ id: type.id })" class="btn btn-xs btn-primary" type="button">Edytuj kategorie</button>
             <button ng-click="types.remove(type.id)" class="btn btn-xs btn-danger" type="button">Usuń kategorie</button>
+            </div>
           </td>
         </tr>
         </tbody>
