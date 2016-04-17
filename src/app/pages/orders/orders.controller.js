@@ -11,6 +11,8 @@
     var vm = this;
     vm.refresh = refresh;
     vm.getPage = getPage;
+    vm.remove = remove;
+    vm.changeStatus = changeStatus;
 
     activate();
 
@@ -32,6 +34,7 @@
         vm.pages = data.pages;
         vm.total = data.pages;
       });
+
     }
 
     function filter() {
@@ -56,5 +59,31 @@
       vm.info = message;
       $timeout(function () { vm.count = false; }, time);
     }
+
+    function changeStatus(id){
+      var data = {
+        realized: true
+      };
+      communicationFactory.orders.update({id: id}, data,
+        function (data) {
+          $state.go($state.current, {message: 'Status zostałzmieniony.'}, {reload: true});
+        },
+        function () {
+          $state.go('orders', { message: 'Błąd aplikacji. Jeśli problem będzie się powtarzał skontaktuj się z administratorem.' });
+        }
+      );
+    }
+
+    function remove(id){
+      communicationFactory.orders.delete({id: id},
+        function (data) {
+          $state.go($state.current, {message: 'Zamówiówienie zostało usunięte.'}, {reload: true});
+        },
+        function () {
+          $state.go('orders', { message: 'Błąd aplikacji. Jeśli problem będzie się powtarzał skontaktuj się z administratorem.' });
+        }
+      );
+    }
+
   }
 })();

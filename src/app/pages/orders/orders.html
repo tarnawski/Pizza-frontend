@@ -4,11 +4,11 @@
   <div ng-show="orders.info && orders.count" class="alert alert-info">{{orders.info}}</div>
 
   <h1 class="page-header">Zamówienia
-  <div class="pull-right">
-    <button ng-click="orders.refresh()"
-            class="btn btn-primary" type="button">Odśwież listę zamówień
-    </button>
-  </div>
+    <div class="pull-right">
+      <button ng-click="orders.refresh()"
+              class="btn btn-primary" type="button">Odśwież listę zamówień
+      </button>
+    </div>
   </h1>
   <div class="panel panel-default">
     <div class="panel-body">
@@ -19,16 +19,25 @@
           <th>Zamówienie</th>
           <th>Klient</th>
           <th>Dodatkowe informacje</th>
+          <th>Opcje</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="order in orders.orders">
-          <td>{{order.create_date | date:'MM/dd/yyyy h:mma'}}</td>
+          <td>
+            {{order.create_date | date:'MM/dd/yyyy h:mma'}}
+            <br><br>
+            <h4>Status:</h4>
+            <h4>
+            <span ng-class="order.realized ? 'label-success' : 'label-warning'" class="label">
+            {{order.realized?'Zrealizowano':'Oczekuje'}}
+              </span></h4>
+          </td>
           <td>
             <div ng-repeat="item in order.items">
-              <b>{{item.product.name}}</b> ({{item.price.type}})<br>
-              {{item.product.description}}<br>
-              <b>Cena: {{item.price.value}}</b>
+              <b>{{item.product_name}}</b> ({{item.product_type}})<br>
+              {{item.product_description}}<br>
+              <b>Cena: {{item.product_price}}</b>
               <br><br>
             </div>
           </td>
@@ -39,14 +48,25 @@
             {{order.customer.address}}
           </td>
           <td>{{order.description}}</td>
+          <td>
+            <div class="pull-right">
+              <button ng-show="!order.realized" ng-click="orders.changeStatus(order.id)" class="btn btn-xs btn-block btn-primary" type="button">Zmień status</button>
+              <br>
+              <button ng-click="orders.remove(order.id)" class="btn btn-xs btn-block btn-danger" type="button">Usuń</button>
+            </div>
+          </td>
         </tr>
         </tbody>
       </table>
 
       <ul class="pagination pull-right">
         Strona {{orders.page}} z {{orders.pages}}
-        <button ng-show="(orders.page) > 1" ng-click="orders.getPage(orders.page - 1)" class="btn btn-default" type="button">Poprzednia strona</button>
-        <button ng-show="(orders.page) < orders.pages" ng-click="orders.getPage(orders.page + 1)" class="btn btn-default" type="button">Następna strona</button>
+        <button ng-show="(orders.page) > 1" ng-click="orders.getPage(orders.page - 1)" class="btn btn-default"
+                type="button">Poprzednia strona
+        </button>
+        <button ng-show="(orders.page) < orders.pages" ng-click="orders.getPage(orders.page + 1)"
+                class="btn btn-default" type="button">Następna strona
+        </button>
       </ul>
 
     </div>
