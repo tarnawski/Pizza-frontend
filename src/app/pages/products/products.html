@@ -28,7 +28,7 @@
         <tr ng-repeat="product in products.products">
           <td>{{product.name}}</td>
           <td>{{product.description}}</td>
-          <td>{{product.available}}</td>
+          <td>{{product.available ? 'Tak' : 'Nie'}}</td>
           <td>
             <div class="pull-right">
             <button ui-sref="prices({type_id: products.idType, product_id: product.id})" class="btn btn-xs btn-success" type="button">Lista cen produktu</button>

@@ -66,7 +66,7 @@
       };
       communicationFactory.orders.update({id: id}, data,
         function (data) {
-          $state.go($state.current, {message: 'Status zostałzmieniony.'}, {reload: true});
+          $state.go($state.current, {message: 'Status został zmieniony.'}, {reload: true});
         },
         function () {
           $state.go('orders', { message: 'Błąd aplikacji. Jeśli problem będzie się powtarzał skontaktuj się z administratorem.' });

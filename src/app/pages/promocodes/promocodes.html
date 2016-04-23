@@ -15,8 +15,7 @@
         <thead>
         <tr>
           <th>Nazwa</th>
-          <th>Rabat procentowy</th>
-          <th>Rabat całościowy</th>
+          <th>Typ rabatu</th>
           <th>Wartość</th>
           <th>Kod</th>
           <th>Aktywny</th>
@@ -26,11 +25,10 @@
         <tbody>
         <tr ng-repeat="promocode in promocodes.promocodes">
           <td>{{promocode.name}}</td>
-          <td>{{promocode.percent}}</td>
-          <td>{{promocode.overall}}</td>
-          <td>{{promocode.value}}</td>
+          <td>{{promocode.percent ? 'Procentowy' : 'Całościowy'}}</td>
+          <td>{{promocode.value}}{{promocode.percent ? '%' : 'zł'}}</td>
           <td>{{promocode.code}}</td>
-          <td>{{promocode.available}}</td>
+          <td>{{promocode.available ? 'Tak' : 'Nie'}}</td>
           <td>
             <button ui-sref="update_promocode({ id: promocode.id })" class="btn btn-xs btn-primary" type="button">Edytuj</button>
             <button ng-click="promocodes.remove(promocode.id)" class="btn btn-xs btn-danger" type="button">Usuń</button>

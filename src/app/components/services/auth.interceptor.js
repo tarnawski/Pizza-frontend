@@ -6,7 +6,7 @@
         .factory('authInterceptor', authInterceptor);
 
     /** @ngInject */
-    function authInterceptor($log, $q, $rootScope, store, toaster) {
+    function authInterceptor($log, $q, $rootScope, store, toaster, CONSTANTS) {
         return {
             request: request,
             requestError: requestError,
@@ -15,6 +15,10 @@
         };
 
         function request(config) {
+          if(config.url.search(CONSTANTS.BASE_URL_API) == 0){
+            $("#loader").show();
+          }
+
           var currentUser = store.get('currentUser');
           if(angular.isObject(currentUser) && angular.isString(currentUser.access_token)) {
             config.headers.Authorization = 'Bearer ' + currentUser.access_token;
@@ -27,6 +31,9 @@
         }
 
         function response(resp) {
+          if(resp.config.url.search(CONSTANTS.BASE_URL_API) == 0){
+            $("#loader").hide();
+          }
           return resp;
         }
 
