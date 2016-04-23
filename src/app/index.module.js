@@ -18,6 +18,7 @@
       'angular-storage',
 
       // App modules
+      'pizzaFrontend.demo',
       'pizzaFrontend.login',
       'pizzaFrontend.dashboard',
       'pizzaFrontend.customers',
